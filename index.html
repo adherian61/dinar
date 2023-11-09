@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+<style>
+          * {
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 60%;
+        margin: 40px auto;
+      }
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 50vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.form-container {
+ width: 300px;
+ padding: 40px;
+ margin: auto;
+ margin-top: 0px;
+ margin-bottom: 250px;
+ background-color: white;
+ box-shadow: 0px 0px 15px 0px grey;
+ border-radius: 15px;
+}
+
+
+input[type=text], input[type=password] {
+ width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
+ border: 3px solid #000000;
+ box-sizing: border-box;
+ border-radius: 21px;
+}
+
+button {
+ background-color: #4CAF50;
+ color: white;
+ padding: 14px 20px;
+ margin: 8px 0;
+ border: none;
+ border-radius: 21px;
+ cursor: pointer;
+ width: 100%;
+}
+
+button:hover {
+ opacity: 0.9;
+}
+
+.error {
+ color: red;
+ margin-top: 10px;
+}
+
+</style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script src="./lib/vara.min.js" type="text/javascript"></script>
+    <script>
+      var vara = new Vara(
+        "#container",
+        "./fonts/Satisfy/SatisfySL.json",
+        [
+          {
+            text: "Selamat Datang",
+            textAlign: "center",
+            strokeWidth: 2.5,
+            y: 10,
+        
+            duration: 5000,
+          },
+        ],
+        {
+          fontSize: 50,
+        }
+      );
+      vara.ready(function () {
+        vara.draw("sphinx");
+      });
+      </script>
+   <div class="d-flex flex-column justify-content-center w-100 h-100">
+<center>
+<div class="form-container">
+    <h1>L O G I N</h1>
+    <p style="position:center; color:#F00000;">‎</p>
+ <form id="login-form">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Contoh : Joko Widodo" name="uname" id="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Contoh : 3.31.22.0.99" name="psw" id="psw" required>
+    <button type="submit">LOGIN</button>
+    <button onclick=YA()>CLUE</button>
+ </form>
+</div>
+</center>
+
+<script>
+    function YA()
+						 						{
+					 	 					alert("USERNAME : SAYA\nPASSWORD : 123");
+					 	 					}
+document.getElementById("login-form").addEventListener("submit", function(event){
+ event.preventDefault();
+
+ var name = document.getElementById("uname").value;
+ var password = document.getElementById("psw").value;
+
+ if(name=='SAYA' && password=='123'){
+    window.location.href = "welcome.html";
+ } else {
+    var errorMsg = document.createElement('div');
+    errorMsg.className = 'error';
+    errorMsg.innerHTML = 'Invalid username or password';
+    document.querySelector('.form-container').appendChild(errorMsg);
+    setTimeout(function(){
+      document.querySelector('.error').remove();
+    }, 2000);
+ }
+});
+</script>
+</body>
+</html>
